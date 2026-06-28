@@ -1,0 +1,7 @@
+# Netlify pretty-URL + legacy SEO mapping
+# Stary hub /uslugi/ -> nowy hub (canonical na starej stronie wskazywał uslugi-marketingowe)
+/uslugi                       /uslugi-marketingowe/            301
+/uslugi/                      /uslugi-marketingowe/            301
+
+# .html -> ładne, folderowe URL-e (zachowanie struktury z sezmoo.com)
+/uslugi-marketingowe/index.html                        /uslugi-marketingowe/                                   301

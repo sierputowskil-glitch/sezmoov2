@@ -1,0 +1,212 @@
+/* ============================================================
+   SEZMOO — WOW scroll layer for service pages
+   "THE EDIT BAY" — scroll = przesuwanie głowicy po taśmie
+   JS writes ONE var per pinned section: --p (0..1).
+   ALL motion is CSS calc() on --p → GPU transform/opacity = 60fps.
+   Heavy pinning gated to desktop+fine pointer+motion-ok.
+   Mobile / reduced-motion = static end-state (no jank).
+   ============================================================ */
+
+:root { --wow-ease: cubic-bezier(.22,.61,.36,1); }
+
+/* full-bleed helper (scoped) */
+.wb { width: 100vw; margin-inline: calc(50% - 50vw); }
+
+/* ============================================================
+   MARQUEE TICKER (pure CSS, cheap)
+   ============================================================ */
+.wow-ticker { border-block: 1px solid var(--line-soft); background: oklch(0.16 0.004 60 / .6); overflow: hidden; }
+.wow-ticker__track { display: flex; gap: 0; width: max-content; animation: wowTick 60s linear infinite; }
+.wow-ticker:hover .wow-ticker__track { animation-play-state: paused; }
+.wow-ticker__item {
+  display: inline-flex; align-items: center; gap: 14px; padding: 14px 26px;
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--fg-dim); white-space: nowrap;
+}
+.wow-ticker__item b { color: var(--rec); font-weight: 400; }
+.wow-ticker__item::after { content: "●"; color: var(--rec); font-size: 7px; }
+@keyframes wowTick { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce){ .wow-ticker__track { animation: none; } }
+
+/* ============================================================
+   HERO SCRUB
+   ============================================================ */
+.wow-hero { position: relative; }
+.wow-hero__pin { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; }
+.wow-hero__bg { position: absolute; inset: 0; z-index: -2; }
+.wow-hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) brightness(.6); }
+/* grade that "develops" as you scroll */
+.wow-hero__grade {
+  position: absolute; inset: 0; z-index: -1; mix-blend-mode: soft-light; pointer-events: none;
+  background: linear-gradient(120deg, oklch(0.55 0.16 95 / .32), transparent 62%), linear-gradient(300deg, oklch(0.4 0.08 250 / .3), transparent 58%);
+  opacity: calc(.12 + .4 * var(--p, 0));
+}
+.wow-hero__scrim { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, oklch(0.1 0.004 60 / .5) 0%, transparent 30%, transparent 46%, oklch(0.1 0.004 60 / .86) 90%, var(--bg) 100%); }
+.wow-hero__scan { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .22;
+  background: repeating-linear-gradient(0deg, transparent 0 3px, oklch(0 0 0 / .14) 3px 4px); }
+/* subtle parallax push on the still as you scroll (calm) */
+html.wow-on .wow-hero__bg { transform: scale(calc(1 + .06 * var(--p,0))); transform-origin: center; will-change: transform; }
+
+.wow-hero__hud { position: absolute; top: clamp(92px,12vh,120px); right: var(--shell-pad); z-index: 3;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 9px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--fg-dim); }
+.wow-hero__rec { color: var(--rec); display: inline-flex; align-items: center; gap: 7px; }
+.wow-hero__rec::before { content:""; width: 7px; height: 7px; border-radius: 50%; background: var(--rec); box-shadow: 0 0 10px var(--rec-glow); animation: wowBlink 1.4s steps(2) infinite; }
+@keyframes wowBlink { 50% { opacity: .25; } }
+
+.wow-hero__inner { position: relative; z-index: 3; width: 100%; padding-block: clamp(40px,7vh,90px); }
+.wow-hero__tcbig { font-family: var(--font-mono); font-size: clamp(14px,2.4vw,30px); letter-spacing: .1em; color: var(--rec); display: inline-flex; align-items: center; gap: 12px; }
+.wow-hero__tcbig::before { content:""; width: 10px; height: 10px; border-radius: 50%; background: var(--rec); box-shadow: 0 0 12px var(--rec-glow); }
+.wow-hero__title { font-weight: 700; font-size: clamp(54px,10vw,168px); line-height: .86; letter-spacing: -.03em; margin-top: 14px; text-wrap: balance; }
+.wow-hero__title .accent { color: var(--rec); }
+.wow-hero__sub { margin-top: clamp(18px,3vh,28px); color: var(--fg-dim); font-size: clamp(17px,1.7vw,24px); line-height: 1.4; max-width: 46ch; text-wrap: pretty; }
+.wow-hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px,4vh,36px); }
+.wow-hero__corner { position: absolute; inset: clamp(14px,2vw,26px); z-index: 2; pointer-events: none; }
+.wow-hero__corner span { position: absolute; width: 16px; height: 16px; border: 2px solid oklch(0.96 0.006 80 / .5); }
+.wow-hero__corner span:nth-child(1){ top:0; left:0; border-right:0; border-bottom:0; }
+.wow-hero__corner span:nth-child(2){ top:0; right:0; border-left:0; border-bottom:0; }
+.wow-hero__corner span:nth-child(3){ bottom:0; left:0; border-right:0; border-top:0; }
+.wow-hero__corner span:nth-child(4){ bottom:0; right:0; border-left:0; border-top:0; }
+
+/* ============================================================
+   FORMATS — one shoot → many formats
+   master stays / shrinks up; format chips rise + fade staggered
+   ============================================================ */
+.wow-fmt { position: relative; background: var(--bg); }
+.wow-fmt__pin { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: clamp(20px,3vh,40px); padding-block: clamp(80px,12vh,140px); }
+.wow-fmt__head { text-align: center; }
+.wow-fmt__no { font-family: var(--font-mono); font-size: 12px; letter-spacing: .24em; color: var(--rec); }
+.wow-fmt__title { font-weight: 700; font-size: clamp(28px,4.4vw,64px); line-height: .98; letter-spacing: -.02em; margin-top: 12px; text-wrap: balance; }
+.wow-fmt__title .accent { color: var(--rec); }
+
+.wow-fmt__stage { position: relative; display: flex; flex-direction: column; align-items: center; gap: clamp(18px,2.6vw,34px); }
+.wow-fmt__master {
+  position: relative; width: clamp(280px, 42vw, 620px); aspect-ratio: 16/9; overflow: hidden; border: 1px solid var(--line-soft);
+  transform: translateY(calc(-26px * var(--p,0))) scale(calc(1 - .06 * var(--p,0))); transform-origin: center top; will-change: transform;
+  box-shadow: 0 30px 80px -40px oklch(0 0 0 / .8);
+}
+.wow-fmt__master img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.95) brightness(.86); }
+.wow-fmt__master .wow-fmt__badge { position: absolute; left: 12px; top: 11px; }
+.wow-fmt__render { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: oklch(1 0 0 / .12); }
+.wow-fmt__render i { display:block; height:100%; width: calc(100% * var(--p,0)); background: var(--rec); box-shadow: 0 0 12px var(--rec-glow); }
+
+.wow-fmt__row { display: flex; justify-content: center; align-items: flex-end; gap: clamp(10px,1.4vw,20px); flex-wrap: nowrap; }
+.wow-fmt__chip {
+  --d: 0; --l: clamp(0, calc((var(--p,0) - var(--d)) * 2.4), 1);
+  position: relative; overflow: hidden; border: 1px solid var(--line-soft); background: var(--bg-2);
+  opacity: var(--l); transform: translateY(calc(56px * (1 - var(--l)))) scale(calc(.9 + .1 * var(--l))); will-change: transform, opacity;
+}
+.wow-fmt__chip img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.92) brightness(.8); }
+.wow-fmt__chip[data-fmt="vert"]  { width: clamp(70px,7vw,104px); aspect-ratio: 9/16; --d: 0; }
+.wow-fmt__chip[data-fmt="story"] { width: clamp(70px,7vw,104px); aspect-ratio: 9/16; --d: .1; }
+.wow-fmt__chip[data-fmt="sq"]    { width: clamp(108px,11vw,164px); aspect-ratio: 1/1; --d: .2; }
+.wow-fmt__chip[data-fmt="ad"]    { width: clamp(150px,16vw,236px); aspect-ratio: 16/9; --d: .3; }
+.wow-fmt__cap { position: absolute; left: 8px; bottom: 7px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg); text-shadow: 0 1px 4px oklch(0 0 0 / .8); }
+.wow-fmt__tick { position: absolute; left: 50%; top: -16px; width: 1px; height: 14px; background: var(--rec); transform-origin: bottom; transform: scaleY(var(--l)); }
+
+.wow-fmt__badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg);
+  padding: 5px 9px; background: oklch(0.12 0.004 60 / .6); border: 1px solid oklch(0.96 0.006 80 / .18); border-radius: 3px; }
+
+.wow-fmt__count { text-align: center; font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; color: var(--fg-faint); }
+.wow-fmt__count b { color: var(--rec); font-weight: 400; }
+
+/* ============================================================
+   PROCESS RAIL (light scrub)
+   ============================================================ */
+.wow-proc__rail { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--line-soft); }
+.wow-proc__rail i { position: absolute; left: 0; top: 0; width: 100%; height: calc(100% * var(--p,0)); background: var(--rec); box-shadow: 0 0 12px var(--rec-glow); }
+
+/* ============================================================
+   DESKTOP-ONLY pinning.
+   Enabled by JS adding .wow-on to <html> (desktop + fine + motion-ok).
+   Without it: sections are normal flow, content at end-state.
+   ============================================================ */
+.wow-hero__corner { display: none; }
+html.wow-on .wow-hero__corner { display: block; }
+
+/* default (mobile / no-wow): show end state, no pin, no scrub transforms */
+.wow-fmt__master { transform: scale(.96); }
+.wow-fmt__chip { opacity: 1; transform: none; }
+.wow-fmt__tick { transform: scaleY(1); }
+.wow-fmt__render i { width: 100%; }
+.wow-fmt__row { flex-wrap: wrap; }
+
+/* ============================================================
+   PREMIUM HERO OVERRIDE
+   Toned down: no placeholder image, no pseudo-timecode, no
+   broadcast HUD. Clean, confident type on near-black. Restraint.
+   ============================================================ */
+.wow-hero__bg, .wow-hero__grade, .wow-hero__scrim, .wow-hero__scan,
+.wow-hero__hud, .wow-hero__tcbig { display: none !important; }
+.wow-hero__pin { min-height: clamp(560px, 86svh, 940px); background: var(--bg); }
+.wow-hero__corner span { border-color: oklch(0.96 0.006 80 / .14); width: 14px; height: 14px; }
+.wow-hero__inner { padding-block: clamp(48px,9vh,110px); }
+.wow-hero__title { margin-top: 22px; }
+/* subtle category eyebrow above the title (premium, quiet) */
+.wow-hero__eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--fg-faint); }
+.wow-hero__eyebrow::before { content:""; width: 22px; height: 1px; background: var(--rec); }
+
+html.wow-on .wow-hero { height: auto; }
+html.wow-on .wow-hero__pin { position: relative; top: auto; }
+html.wow-on .wow-fmt { height: 280vh; }
+html.wow-on .wow-fmt__pin { position: sticky; top: 0; }
+html.wow-on .wow-fmt__row { flex-wrap: nowrap; }
+html.wow-on .wow-fmt__master { transform: translateY(calc(-26px * var(--p,0))) scale(calc(1 - .06 * var(--p,0))); }
+html.wow-on .wow-fmt__chip { opacity: var(--l); transform: translateY(calc(56px * (1 - var(--l)))) scale(calc(.9 + .1 * var(--l))); }
+html.wow-on .wow-fmt__tick { transform: scaleY(var(--l)); }
+html.wow-on .wow-fmt__render i { width: calc(100% * var(--p,0)); }
+
+@media (max-width: 880px){
+  .wow-hero__sub { max-width: none; }
+  .wow-fmt__chip[data-fmt="vert"], .wow-fmt__chip[data-fmt="story"]{ width: clamp(78px,22vw,104px); }
+  .wow-fmt__chip[data-fmt="sq"]{ width: clamp(110px,30vw,164px); }
+  .wow-fmt__chip[data-fmt="ad"]{ width: clamp(150px,44vw,236px); }
+}
+
+/* ============================================================
+   SHOWREEL — full-bleed, spacious, confident
+   ============================================================ */
+.reel { padding-block: clamp(56px,9vh,120px); }
+.reel__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(22px,3.5vh,40px); }
+.reel__k { font-family: var(--font-mono); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--rec); }
+.reel__title { font-weight: 700; font-size: clamp(26px,3.4vw,48px); line-height: .98; letter-spacing: -.02em; margin-top: 12px; text-wrap: balance; }
+.reel__meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; color: var(--fg-faint); display: flex; gap: 18px; flex-wrap: wrap; }
+.reel__frame { position: relative; aspect-ratio: 21/9; overflow: hidden; border: 1px solid var(--line-soft); background: var(--bg-2); cursor: none; }
+.reel__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.9) brightness(.58); transition: filter .7s var(--ease), transform 1.4s var(--ease); }
+.reel__frame:hover img { filter: saturate(1) brightness(.72); transform: scale(1.03); }
+.reel__frame::after { content:""; position:absolute; inset:0; pointer-events:none; background: repeating-linear-gradient(0deg, transparent 0 3px, oklch(0 0 0 / .12) 3px 4px); opacity:.3; }
+.reel__play { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; }
+.reel__btn { width: clamp(78px,8vw,118px); aspect-ratio: 1; border-radius: 50%; background: var(--rec); display: grid; place-items: center; box-shadow: 0 0 0 0 var(--rec-glow); transition: transform .4s var(--ease), box-shadow .5s var(--ease); }
+.reel__frame:hover .reel__btn { transform: scale(1.08); box-shadow: 0 0 0 16px oklch(1 0.18 95 / .1); }
+.reel__btn::after { content:""; width:0; height:0; margin-left:7px; border-left: clamp(22px,2.1vw,30px) solid var(--on-accent); border-top: clamp(14px,1.4vw,19px) solid transparent; border-bottom: clamp(14px,1.4vw,19px) solid transparent; }
+.reel__tag { position: absolute; left: 18px; bottom: 16px; z-index: 3; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; color: var(--fg-dim); display: flex; gap: 16px; }
+.reel__tag .rec { color: var(--rec); }
+.reel__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 5; }
+@media (max-width: 760px){ .reel__frame { aspect-ratio: 16/10; } }
+.reel__frame.is-still { cursor: default; }
+.reel__frame.is-still::before { content: attr(data-label); position: absolute; right: 18px; top: 16px; z-index: 3; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; color: var(--rec); }
+
+/* ============================================================
+   MANIFESTO — big confident positioning statement, lots of air
+   ============================================================ */
+.manifesto { padding-block: clamp(80px,16vh,200px); border-top: 1px solid var(--line-soft); }
+.manifesto__k { font-family: var(--font-mono); font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--rec); }
+.manifesto__lead { font-weight: 700; font-size: clamp(28px,4.6vw,68px); line-height: 1.08; letter-spacing: -.025em; max-width: 18ch; margin-top: clamp(22px,4vh,44px); text-wrap: balance; }
+.manifesto__lead .accent { color: var(--rec); }
+.manifesto__sub { color: var(--fg-dim); font-size: clamp(16px,1.4vw,21px); line-height: 1.6; max-width: 52ch; margin-top: clamp(22px,3vh,32px); text-wrap: pretty; }
+
+/* ============================================================
+   FORMATS STRIP — calm, airy alternative to the pinned moment
+   ============================================================ */
+.fstrip { padding-block: clamp(48px,8vh,110px); border-top: 1px solid var(--line-soft); }
+.fstrip__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(12px,1.6vw,22px); margin-top: clamp(30px,4.5vh,52px); align-items: end; }
+.fstrip__item { display: flex; flex-direction: column; gap: 14px; }
+.fstrip__frame { position: relative; overflow: hidden; border: 1px solid var(--line-soft); background: var(--bg-2); }
+.fstrip__frame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.92) brightness(.82); transition: filter .5s var(--ease), transform 1s var(--ease); }
+.fstrip__item:hover .fstrip__frame img { filter: saturate(1) brightness(.95); transform: scale(1.04); }
+.fstrip__item[data-r="916"] .fstrip__frame { aspect-ratio: 9/16; }
+.fstrip__item[data-r="11"] .fstrip__frame { aspect-ratio: 1/1; }
+.fstrip__item[data-r="169"] .fstrip__frame { aspect-ratio: 16/9; }
+.fstrip__cap { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.fstrip__name { font-weight: 700; font-size: clamp(15px,1.2vw,18px); letter-spacing: -.01em; }
+.fstrip__ratio { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; color: var(--rec); }
+@media (max-width: 760px){ .fstrip__row { grid-template-columns: 1fr 1fr; } }

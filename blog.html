@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — SEZMOO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor">PLAY</div>
+<div class="cursor-dot"></div>
+<div class="scrubber"><div class="scrubber__fill"><span class="scrubber__head"></span></div></div>
+
+<nav class="nav">
+  <a class="brand" href="index.html#hero" aria-label="SEZMOO">
+    <img class="brand__logo" src="assets/brand/sezmoo-logo-wy.svg" alt="SEZMOO" />
+  </a>
+  <div class="nav__menu" id="main-menu">
+    <a href="index.html#work">Portfolio</a>
+    <a href="index.html#services">Video</a>
+    <a href="index.html#services">Social media</a>
+    <a href="index.html#studio">Studio</a>
+    <a href="index.html#team">Zespół</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#cta">Kontakt</a>
+  </div>
+  <div class="nav__tc"><span class="live">●&nbsp;REC</span><span class="label" data-tc>00:00:12:08</span></div>
+  <button class="nav__burger" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+  <section class="blog blog--page shell" id="blog" data-screen-label="Blog">
+    <div class="blog-hero">
+      <div>
+        <span class="eyebrow reveal"><span class="tick"></span>SEZMOO NOTES</span>
+        <h1 class="blog-hero__title reveal">Notatki z planu, montażu i feedu.</h1>
+      </div>
+      <p class="blog-hero__copy reveal" data-d="1">Praktyczne wpisy o produkcji wideo, krótkich formatach, social mediach i pracy z marką przed kamerą.</p>
+    </div>
+
+    <div class="blog-topics reveal">
+      <a href="#all" class="is-active">Wszystko</a>
+      <a href="#production">Produkcja</a>
+      <a href="#social">Social</a>
+      <a href="#post">Postprodukcja</a>
+      <a href="#strategy">Strategia</a>
+    </div>
+
+    <article class="blog-feature reveal">
+      <div class="blog-feature__media">
+        <div class="frame-media"></div>
+        <span>FEATURED</span>
+      </div>
+      <div class="blog-feature__body">
+        <span class="blog-post__meta">PRODUKCJA · 04 MIN · 12.06.2026</span>
+        <h2>Jak przygotować markę do dnia zdjęciowego?</h2>
+        <p>Brief, lokacje, produkt, osoby na planie i materiały, które skracają czas produkcji. Konkretna checklista przed wejściem kamer.</p>
+        <a href="artykul.html">Czytaj artykuł</a>
+      </div>
+    </article>
+
+    <div class="blog-layout">
+      <div class="blog__list">
+        <article class="blog-post reveal">
+          <span class="blog-post__meta">SOCIAL · 03 MIN</span>
+          <h3>Dlaczego jedna produkcja powinna dawać wiele formatów?</h3>
+          <p>Reels, kampanie, www i paid media mogą powstać z jednego planu, jeśli od początku myślimy dystrybucją.</p>
+          <a href="artykul.html">Czytaj dalej</a>
+        </article>
+        <article class="blog-post reveal" data-d="1">
+          <span class="blog-post__meta">POST · 05 MIN</span>
+          <h3>Kolor, rytm i pierwsze trzy sekundy.</h3>
+          <p>O tym, co sprawia, że materiał wygląda premium i zatrzymuje uwagę w feedzie.</p>
+          <a href="artykul.html">Czytaj dalej</a>
+        </article>
+        <article class="blog-post reveal" data-d="2">
+          <span class="blog-post__meta">STRATEGIA · 06 MIN</span>
+          <h3>Content plan, który nie kończy się po publikacji.</h3>
+          <p>Jak zaplanować produkcję tak, żeby materiał pracował w kampanii, organicu i na stronie.</p>
+          <a href="artykul.html">Czytaj dalej</a>
+        </article>
+        <article class="blog-post reveal">
+          <span class="blog-post__meta">EVENT · 04 MIN</span>
+          <h3>Aftermovie, który nie jest tylko relacją.</h3>
+          <p>Jak zamienić wydarzenie w materiał sprzedażowy, employer brandingowy i socialowy.</p>
+          <a href="artykul.html">Czytaj dalej</a>
+        </article>
+      </div>
+
+      <aside class="blog-side reveal" data-d="1">
+        <span class="blog-side__label">Tematy</span>
+        <a href="#production">Video production</a>
+        <a href="#social">Reels / TikTok / Shorts</a>
+        <a href="#post">Postprodukcja</a>
+        <a href="#strategy">Content strategy</a>
+        <a href="index.html#cta">Zaproponuj temat</a>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer__top">
+        <div class="footer__brandcol">
+          <a href="index.html" class="footer__logo"><img src="assets/brand/sezmoo-logo-wy.svg" alt="SEZMOO" /></a>
+          <p class="footer__tag">Content · Video · Campaigns</p>
+          <p class="footer__desc">Video, content i materiały kampanijne dla marek, które potrzebują regularnej, sprawnej produkcji.</p>
+        </div>
+        <nav class="footer__cols" aria-label="Stopka">
+          <div class="footer__col">
+            <span class="footer__h">Studio</span>
+            <a href="index.html#work">Realizacje</a>
+            <a href="index.html#services">Usługi</a>
+            <a href="index.html#team">Zespół</a>
+            <a href="index.html#kontakt">Brief</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__h">Kontakt</span>
+            <a href="mailto:hello@sezmoo.com">hello@sezmoo.com</a>
+            <a href="tel:+48502260450">+48 502 260 450</a>
+            <span class="footer__addr">Zeusa 34<br>80-299 Gdańsk</span>
+          </div>
+          <div class="footer__col">
+            <span class="footer__h">Social</span>
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 SEZMOO — ALL RIGHTS RESERVED</span>
+        <a href="#" class="footer__totop" data-totop>Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

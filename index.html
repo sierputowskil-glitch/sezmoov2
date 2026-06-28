@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEZMOO — Content & Video Production</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300..700&family=Newsreader:opsz,wght@6..72,400..600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- film texture -->
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<!-- cursor -->
+<div class="cursor">PLAY</div>
+<div class="cursor-dot"></div>
+
+<!-- page scrubber -->
+<div class="scrubber"><div class="scrubber__fill"><span class="scrubber__head"></span></div></div>
+
+<!-- side social rail -->
+<aside class="side-rail" aria-label="Social media">
+  <a href="#" aria-label="Instagram">IG</a>
+  <a href="#" aria-label="Facebook">FB</a>
+  <a href="#" aria-label="YouTube">YT</a>
+  <a href="#" aria-label="LinkedIn">IN</a>
+  <span class="side-rail__line"></span>
+</aside>
+
+<!-- back to top -->
+<button class="to-top" type="button" aria-label="Do góry" data-totop>↑</button>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a class="brand" href="#hero" aria-label="SEZMOO">
+    <img class="brand__logo" src="assets/brand/sezmoo-logo-wy.svg" alt="SEZMOO" />
+  </a>
+  <div class="nav__menu" id="main-menu">
+    <a href="#work">Portfolio</a>
+    <a href="uslugi-marketingowe/index.html">Usługi</a>
+    <a href="#studio">Studio</a>
+    <a href="#team">Zespół</a>
+    <a href="#opinie">Opinie</a>
+    <a href="blog.html">Blog</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+  <div class="nav__tc"><span class="live">●&nbsp;REC</span><span class="label" data-tc>00:00:12:08</span></div>
+  <button class="nav__burger" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+
+<!-- ============ 1 · HERO ============ -->
+<div class="hero-wrap" id="hero-wrap">
+<section class="hero" id="hero" data-screen-label="Hero">
+  <div class="hero__reel">
+    <div class="frame-media"></div>
+    <div class="hero__video">
+      <div class="yt-bg">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/ii46_hOo4ig?autoplay=1&mute=1&controls=0&loop=1&playlist=ii46_hOo4ig&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0"
+          title="SEZMOO showreel"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin"
+          loading="eager"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="hero__grad"></div>
+  <div class="hero__corners"><span></span><span></span><span></span><span></span></div>
+
+  <div class="hero__hud tl">
+    <span class="recwrap"><span class="d"></span>REC</span>
+    <span data-tc>00:00:12:08</span>
+  </div>
+  <div class="hero__hud tr">
+    <div>SEZMOO / CONTENT &amp; VIDEO PRODUCTION</div>
+    <div style="color:var(--fg-faint);margin-top:6px">4K · 24FPS · GDAŃSK / PL</div>
+  </div>
+
+  <div class="hero__play" data-cursor="play"></div>
+
+  <div class="shell hero__content">
+    <span class="eyebrow hero__label"><span class="tick"></span>Showreel 2026</span>
+    <h1>
+      <span class="clip"><span>Video, które</span></span>
+      <span class="clip"><span>robi <em class="accent" style="font-style:normal">robotę.</em></span></span>
+    </h1>
+    <p class="hero__sub">Content, video i materiały kampanijne dla marek, które potrzebują sprawnej, regularnej produkcji marketingowej.</p>
+    <div class="hero__cta">
+      <a href="#work" class="btn btn--primary" data-magnetic><span class="ico"></span><span class="lbl">Zobacz portfolio</span></a>
+      <a href="#kontakt" class="btn" data-magnetic><span class="lbl">Porozmawiajmy</span></a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ 2 · WORK / PORTFOLIO ============ -->
+<section class="work shell" id="work" data-screen-label="Work">
+  <div class="sec-head">
+    <h2 class="sec-title reveal">Wybrane realizacje<br>na osi czasu.</h2>
+    <span class="sec-index reveal">[ 02 ] — SELECTED WORK</span>
+  </div>
+
+  <p class="sec-lead reveal">Najlepszy dowód tego, jak pracujemy. Regularna produkcja video i contentu dla marek <strong>motoryzacyjnych, B2B i konsumenckich</strong> — od pojedynczych filmów po stałą obsługę.</p>
+
+  <div class="work__filters reveal">
+    <button class="chip is-on" data-filter="all">Wszystko</button>
+    <button class="chip" data-filter="automotive">Automotive</button>
+    <button class="chip" data-filter="b2b">B2B</button>
+    <button class="chip" data-filter="social">Social media</button>
+    <button class="chip" data-filter="eventy">Eventy</button>
+    <button class="chip" data-filter="kampanie">Kampanie</button>
+    <button class="chip" data-filter="motion">Motion / 3D</button>
+  </div>
+
+  <div class="work__grid">
+
+    <article class="card card--lg reveal" data-cats="automotive,kampanie" data-cursor="play" data-parallax="22">
+      <div class="card__media card__media--fit">
+        <video class="card__video-bg" src="uploads/audi-rs5-trailer.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <video class="card__video" src="uploads/audi-rs5-trailer.mp4" muted loop playsinline preload="metadata"></video>
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 00:33:02</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">Audi RS</div>
+          <div class="card__cat">Automotive / Premium film</div>
+        </div>
+        <span class="card__tag">0:55</span>
+      </div>
+    </article>
+
+    <article class="card card--sm reveal" data-d="1" data-cats="b2b,motion" data-cursor="play" data-parallax="16">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/vts-animacja.avif" alt="VTS Group — animacja 3D" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 00:58:11</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">VTS Group</div>
+          <div class="card__cat">Animacja 3D / B2B content</div>
+        </div>
+        <span class="card__tag">1:10</span>
+      </div>
+    </article>
+
+    <article class="card card--third reveal" data-cats="automotive,social" data-cursor="play" data-parallax="18">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/byd.jpg" alt="BYD Plichta" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 01:24:06</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">BYD Plichta</div>
+          <div class="card__cat">Automotive / Social video</div>
+        </div>
+        <span class="card__tag">0:42</span>
+      </div>
+    </article>
+
+    <article class="card card--third reveal" data-d="1" data-cats="automotive" data-cursor="play" data-parallax="18">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/landrover.jpg" alt="Land Rover — offroad" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 01:02:19</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">Land Rover</div>
+          <div class="card__cat">Automotive / Offroad</div>
+        </div>
+        <span class="card__tag">0:38</span>
+      </div>
+    </article>
+
+    <article class="card card--third reveal" data-d="2" data-cats="b2b,eventy" data-cursor="play" data-parallax="18">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/baltic-robert-2.avif" alt="Baltic Towers — employer branding" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 02:11:08</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">Baltic Towers</div>
+          <div class="card__cat">Employer branding / Video</div>
+        </div>
+        <span class="card__tag">1:32</span>
+      </div>
+    </article>
+
+    <article class="card card--half reveal" data-cats="eventy,kampanie" data-cursor="play" data-parallax="20">
+      <a class="card__perma" href="realizacja-world-of-warships.html" aria-label="Zobacz realizację — World of Warships / Captain's Club" style="position:absolute;inset:0;z-index:6"></a>
+      <div class="card__media">
+        <img class="card__video" src="assets/work/captains-club-int.avif" alt="World of Warships — Captain's Club" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 00:47:23</div>
+        <div class="card__live">▶ EVENT</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">World of Warships</div>
+          <div class="card__cat">Captain's Club / Event space</div>
+        </div>
+        <span class="card__tag">EVENT</span>
+      </div>
+    </article>
+
+    <article class="card card--half reveal" data-d="1" data-cats="automotive,kampanie" data-cursor="play" data-parallax="20">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/audi-a6-etron.jpg" alt="Audi A6 e-tron" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 01:38:40</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">Audi A6 e-tron</div>
+          <div class="card__cat">Automotive / Premiera</div>
+        </div>
+        <span class="card__tag">0:30</span>
+      </div>
+    </article>
+
+    <article class="card card--half reveal" data-cats="eventy" data-cursor="play" data-parallax="20">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/balet.avif" alt="Widowisko na stadionie" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 00:12:55</div>
+        <div class="card__live">▶ LIVE</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">Widowisko</div>
+          <div class="card__cat">Event / Relacja live</div>
+        </div>
+        <span class="card__tag">LIVE</span>
+      </div>
+    </article>
+
+    <article class="card card--half reveal" data-d="1" data-cats="motion" data-cursor="play" data-parallax="20">
+      <div class="card__media">
+        <img class="card__video" src="assets/work/animacja-3d.jpg" alt="Wizualizacja 3D" loading="lazy" />
+        <div class="card__scan"></div><div class="card__sweep"></div>
+        <div class="card__tc"><span class="rd"></span>TC 00:09:30</div>
+        <div class="card__live">▶ PREVIEW</div>
+        <div class="card__bar"><i></i></div>
+      </div>
+      <div class="card__info">
+        <div>
+          <div class="card__client">Wizualizacja 3D</div>
+          <div class="card__cat">Motion / 3D / Render</div>
+        </div>
+        <span class="card__tag">0:20</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA · po portfolio -->
+<section class="cta-band shell" aria-label="Portfolio CTA">
+  <div class="cta-band__inner reveal">
+    <div>
+      <span class="eyebrow cta-band__eyebrow"><span class="tick"></span>Selected work → Twój projekt</span>
+      <h2 class="cta-band__title">Podobny format dla <span class="accent">Twojej marki?</span></h2>
+    </div>
+    <div class="cta-band__cta">
+      <a href="#kontakt" class="btn btn--primary" data-magnetic><span class="ico"></span><span class="lbl">Porozmawiajmy o produkcji</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · WHAT WE DO ============ -->
+<section class="services shell" id="services" data-screen-label="Services">
+  <div class="services-bg" aria-hidden="true">
+    <div class="services-bg__wash"></div>
+    <div class="services-bg__beam"></div>
+    <div class="services-bg__scan"></div>
+  </div>
+
+  <div class="sec-head">
+    <h2 class="sec-title reveal">Jedna produkcja.<br>Wiele <span style="color:var(--rec)">formatów.</span></h2>
+    <span class="sec-index reveal">[ 03 ] — CONTENT SYSTEM</span>
+  </div>
+
+  <div class="content-system">
+    <div class="content-pack content-pack--scroll reveal" id="content-pack">
+      <div class="content-pack__screen">
+        <div class="pack-guides"><span></span><span></span><span></span><span></span></div>
+
+        <div class="pack-stage">
+          <span class="pack-stage__label">Frame build</span>
+          <span class="pack-stage__status" id="pack-status">Open gate</span>
+        </div>
+
+        <div class="pack-formats">
+          <div class="pack-fmt" style="--i:0"><span class="pack-fmt__ar">16:9</span><span class="pack-fmt__name">Hero film</span></div>
+          <div class="pack-fmt" style="--i:1"><span class="pack-fmt__ar">9:16</span><span class="pack-fmt__name">Reels / Shorts</span></div>
+          <div class="pack-fmt" style="--i:2"><span class="pack-fmt__ar">1:1</span><span class="pack-fmt__name">Social ads</span></div>
+          <div class="pack-fmt" style="--i:3"><span class="pack-fmt__ar">OOH</span><span class="pack-fmt__name">WWW / Kreacje kampanijne</span></div>
+        </div>
+
+        <div class="pack-output">
+          <span>RAW</span><span class="pack-output__sep"></span><span>EDIT</span><span class="pack-output__sep"></span><span class="pack-output__exp">EXPORT</span>
+        </div>
+
+        <div class="pack-playhead"><span class="pack-playhead__tc" id="pack-tc">00:00:00:00</span></div>
+
+        <div class="pack-shutter">
+          <span class="pack-shutter__top"></span>
+          <span class="pack-shutter__bot"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-copy">
+      <span class="eyebrow reveal"><span class="tick"></span>Campaign output</span>
+      <h3 class="content-copy__title reveal" data-d="1">Nie kończymy<br>na jednym filmie.</h3>
+      <p class="content-copy__text reveal" data-d="2">Z materiału nagranego na planie powstaje cały zestaw gotowy do publikacji: spoty i cutdowny, pionowe rolki, grafiki i posty, formaty reklamowe, miniatury, landing i oprawa całej kampanii. Jedna produkcja pracuje na wszystkich kanałach.</p>
+      <a href="#kontakt" class="btn btn--primary reveal" data-d="3" data-magnetic><span class="ico"></span><span class="lbl">Zaplanuj produkcję</span></a>
+    </div>
+  </div>
+
+  <div class="svc-subhead reveal">
+    <span class="eyebrow"><span class="tick"></span>Cztery filary</span>
+    <p>A wokół tej produkcji budujemy całą stałą obsługę marki:</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar pillar--feat reveal" data-cursor="link">
+      <div class="pillar__head">
+        <span class="pillar__no">P—01</span>
+        <span class="pillar__tag">CORE</span>
+      </div>
+      <div>
+        <h3 class="pillar__title">Video &amp; motion</h3>
+        <p class="pillar__desc">Filmowy filar marki — od planu zdjęciowego po finalny montaż i animację. To z tego najczęściej zaczyna się współpraca.</p>
+      </div>
+      <div class="pillar__list">
+        <a href="uslugi-marketingowe/produkcja-wideo-reels/index.html">Produkcja filmowa<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/produkcja-wideo-reels/index.html">Reels / TikTok / Shorts<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/animacje-2d-i-3d/index.html">Animacje 2D / 3D &amp; motion<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/ujecia-z-drona/index.html">Ujęcia z drona<span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="pillar reveal" data-d="1" data-cursor="link">
+      <div class="pillar__head">
+        <span class="pillar__no">P—02</span>
+        <svg class="pillar__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19 19 5M19 5H8M19 5v11"/></svg>
+      </div>
+      <div>
+        <h3 class="pillar__title">Social &amp; campaign content</h3>
+        <p class="pillar__desc">Stała produkcja materiałów pod profile i kampanie — content plan, kreacje i realizacja w jednym miejscu.</p>
+      </div>
+      <div class="pillar__list">
+        <a href="uslugi-marketingowe/obsluga-social-media/index.html">Prowadzenie social media<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/obsluga-social-media/index.html">Content plan i stała produkcja<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/kampanie-platne/index.html">Kampanie reklamowe i kreacje<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/fotografia/index.html">Fotografia produktowa i wizerunkowa<span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="pillar reveal" data-d="2" data-cursor="link">
+      <div class="pillar__head">
+        <span class="pillar__no">P—03</span>
+        <svg class="pillar__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19 19 5M19 5H8M19 5v11"/></svg>
+      </div>
+      <div>
+        <h3 class="pillar__title">Design &amp; brand materials</h3>
+        <p class="pillar__desc">Grafika i materiały, które trzymają spójny język marki w każdym kanale — online i w druku.</p>
+      </div>
+      <div class="pillar__list">
+        <a href="uslugi-marketingowe/projektowanie-graficzne/index.html">Projektowanie graficzne<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/identyfikacja-wizualna/index.html">Identyfikacja wizualna<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/materialy-reklamowe/index.html">Katalogi i materiały reklamowe<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/reklama-zewnetrzna/index.html">Reklama zewnętrzna (OOH)<span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="pillar reveal" data-d="3" data-cursor="link">
+      <div class="pillar__head">
+        <span class="pillar__no">P—04</span>
+        <svg class="pillar__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 19 19 5M19 5H8M19 5v11"/></svg>
+      </div>
+      <div>
+        <h3 class="pillar__title">Web &amp; digital support</h3>
+        <p class="pillar__desc">Miejsce, do którego prowadzi kampania — szybkie strony i landingi spójne z resztą produkcji.</p>
+      </div>
+      <div class="pillar__list">
+        <a href="uslugi-marketingowe/strony-internetowe-i-landing-page/index.html">Strony www<span class="arrow">→</span></a>
+        <a href="uslugi-marketingowe/strony-internetowe-i-landing-page/index.html">Landing page pod kampanie<span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-all reveal" data-d="1">
+    <a href="uslugi-marketingowe/index.html" class="btn btn--primary" data-magnetic><span class="ico"></span><span class="lbl">Zobacz wszystkie usługi</span></a>
+    <span class="svc-all__hint">12 usług · od produkcji wideo po identyfikację wizualną</span>
+  </div>
+</section>
+<section class="cta-band shell" aria-label="Brief">
+  <div class="cta-band__inner reveal">
+    <div>
+      <span class="eyebrow cta-band__eyebrow"><span class="tick"></span>Brief w 5 minut</span>
+      <h2 class="cta-band__title">Nie wiesz, od którego filaru <span class="accent">zacząć?</span></h2>
+    </div>
+    <div class="cta-band__cta">
+      <a href="#kontakt" class="btn btn--primary" data-magnetic><span class="ico"></span><span class="lbl">Wyślij brief</span></a>
+      <a href="#work" class="btn" data-magnetic><span class="lbl">Zobacz realizacje</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · STUDIO ============ -->
+<section class="studio shell" id="studio" data-screen-label="Studio">
+  <div class="sec-head">
+    <span class="sec-index reveal" style="order:2">[ 04 ] — STUDIO</span>
+    <span class="eyebrow reveal"><span class="tick"></span>Why SEZMOO</span>
+  </div>
+  <div class="studio__grid">
+    <div class="studio__sticky reveal">
+      <div class="studio__media is-vertical" data-parallax="26">
+        <div class="frame-media" style="transform:translateY(var(--py,0))"></div>
+        <div class="yt-bg">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/b_MB9qpw6jE?autoplay=1&mute=1&controls=0&loop=1&playlist=b_MB9qpw6jE&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0"
+            title="SEZMOO — zespół"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy"></iframe>
+        </div>
+        <div class="ovl">
+          <div class="corners"><span></span><span></span><span></span><span></span></div>
+          <div class="tc"><span class="d"></span><span data-tc>00:00:12:08</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="studio__title reveal">Pomysł, produkcja,<br>montaż — <span class="accent">jeden zespół.</span></h2>
+      <p class="studio__copy reveal" data-d="1">Pracujemy jako zespół kreatywno-produkcyjny: od koncepcji, przez plan zdjęć, po gotowe formaty do social media, kampanii i stron www. Działamy jak Twój zewnętrzny dział produkcji contentu.</p>
+      <div class="studio__points">
+        <div class="spt reveal"><span class="spt__no">01</span><span class="spt__txt">Myślimy formatami.</span></div>
+        <div class="spt reveal" data-d="1"><span class="spt__no">02</span><span class="spt__txt">Pracujemy szybko.</span></div>
+        <div class="spt reveal" data-d="2"><span class="spt__no">03</span><span class="spt__txt">Dowozimy wizualnie.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · TEAM ============ -->
+<section class="team shell" id="team" data-screen-label="Team">
+  <div class="sec-head">
+    <h2 class="sec-title reveal">Zespół, który<br>prowadzi obraz.</h2>
+    <span class="sec-index reveal">[ 05 ] — TEAM</span>
+  </div>
+
+  <div class="team__grid">
+    <article class="team-card reveal">
+      <div class="team-card__photo"><span>MT</span></div>
+      <div class="team-card__body">
+        <span class="team-card__no">T—01</span>
+        <h3 class="team-card__name">Maciej Tyma</h3>
+        <p class="team-card__role">Founder · Photographer &amp; Video Producer</p>
+      </div>
+    </article>
+    <article class="team-card reveal" data-d="1">
+      <div class="team-card__photo">
+        <img class="ph ph--front" src="assets/team/hubert.avif" alt="Hubert Fudała" loading="lazy" />
+        <img class="ph ph--hover" src="assets/team/hubert-2.jpeg" alt="" aria-hidden="true" loading="lazy" />
+      </div>
+      <div class="team-card__body">
+        <span class="team-card__no">T—02</span>
+        <h3 class="team-card__name">Hubert Fudała</h3>
+        <p class="team-card__role">Camera Operator &amp; Video Editor</p>
+      </div>
+    </article>
+    <article class="team-card reveal" data-d="2">
+      <div class="team-card__photo"><span>PW</span></div>
+      <div class="team-card__body">
+        <span class="team-card__no">T—03</span>
+        <h3 class="team-card__name">Paweł Wyszomirski</h3>
+        <p class="team-card__role">Reżyser</p>
+      </div>
+    </article>
+    <article class="team-card reveal">
+      <div class="team-card__photo">
+        <img class="ph ph--front" src="assets/team/olga.jpg" alt="Olga Urbańska" loading="lazy" />
+        <img class="ph ph--hover" src="assets/team/olga-2.jpeg" alt="" aria-hidden="true" loading="lazy" />
+      </div>
+      <div class="team-card__body">
+        <span class="team-card__no">T—04</span>
+        <h3 class="team-card__name">Olga Urbańska</h3>
+        <p class="team-card__role">Social Media &amp; Content Specialist</p>
+      </div>
+    </article>
+    <article class="team-card reveal" data-d="1">
+      <div class="team-card__photo"><span>ŁS</span></div>
+      <div class="team-card__body">
+        <span class="team-card__no">T—05</span>
+        <h3 class="team-card__name">Łukasz Sierputowski</h3>
+        <p class="team-card__role">Graphic Designer</p>
+      </div>
+    </article>
+    <article class="team-card reveal" data-d="2">
+      <div class="team-card__photo">
+        <img class="ph ph--front" src="assets/team/radek.jpeg" alt="Radosław Schenk" loading="lazy" />
+        <img class="ph ph--hover" src="assets/team/radek-2.jpeg" alt="" aria-hidden="true" loading="lazy" />
+      </div>
+      <div class="team-card__body">
+        <span class="team-card__no">T—06</span>
+        <h3 class="team-card__name">Radosław Schenk</h3>
+        <p class="team-card__role">Camera Operator &amp; Video Editor</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 6 · PROCESS ============ -->
+<section class="process shell" id="process" data-screen-label="Process">
+  <div class="sec-head">
+    <h2 class="sec-title reveal">Tak montujemy<br>współpracę.</h2>
+    <span class="sec-index reveal">[ 06 ] — PROCESS</span>
+  </div>
+
+  <div class="tl reveal">
+    <div class="tl__ruler">
+      <span>00:00</span><span>00:12</span><span>00:24</span><span>00:36</span><span>00:48</span><span>END</span>
+    </div>
+    <div class="tl__track">
+      <div class="tl__playhead"><span class="ptc">00:00:00:00</span></div>
+      <div class="tl__clips">
+        <div class="clip"><div class="clip__strip"></div><div><span class="clip__no">V1 — 01</span><h3 class="clip__name">Brief</h3></div><span class="clip__dur">0:00 — 0:12</span><div class="clip__fill"></div></div>
+        <div class="clip"><div class="clip__strip"></div><div><span class="clip__no">V1 — 02</span><h3 class="clip__name">Koncepcja</h3></div><span class="clip__dur">0:12 — 0:24</span><div class="clip__fill"></div></div>
+        <div class="clip"><div class="clip__strip"></div><div><span class="clip__no">V1 — 03</span><h3 class="clip__name">Produkcja</h3></div><span class="clip__dur">0:24 — 0:36</span><div class="clip__fill"></div></div>
+        <div class="clip"><div class="clip__strip"></div><div><span class="clip__no">V1 — 04</span><h3 class="clip__name">Postprodukcja</h3></div><span class="clip__dur">0:36 — 0:48</span><div class="clip__fill"></div></div>
+        <div class="clip"><div class="clip__strip"></div><div><span class="clip__no">V1 — 05</span><h3 class="clip__name">Publikacja</h3></div><span class="clip__dur">0:48 — END</span><div class="clip__fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7 · CLIENTS ============ -->
+<section class="clients shell" id="clients" data-screen-label="Clients">
+  <div class="sec-head">
+    <h2 class="sec-title reveal">Zaufali nam.</h2>
+    <span class="sec-index reveal">[ 07 ] — CLIENTS</span>
+  </div>
+  <div class="logo-wall reveal">
+    <div class="logo-cellc"><img class="logo-rings" src="assets/clients/audi.svg" alt="Audi" /></div>
+    <div class="logo-cellc"><span class="logo-word">Netto</span></div>
+    <div class="logo-cellc"><img class="logo-mark" src="assets/clients/vls.svg" alt="VLS" /></div>
+    <div class="logo-cellc"><img class="logo-mark" src="assets/clients/doraco.svg" alt="Doraco" /></div>
+    <div class="logo-cellc"><img class="logo-mark" src="assets/clients/velo-bank.svg" alt="VeloBank" /></div>
+    <div class="logo-cellc"><img class="logo-mark" src="assets/clients/q4rail.svg" alt="Q4rail" /></div>
+    <div class="logo-cellc"><img class="logo-mark" src="assets/clients/2track.svg" alt="2track" /></div>
+    <div class="logo-cellc"><img class="logo-mark" src="assets/clients/life-dom-seniora.svg" alt="Life Dom Seniora" /></div>
+    <div class="logo-cellc"><span class="logo-word">BYD</span></div>
+    <div class="logo-cellc"><span class="logo-word">OMODA &amp; JAECOO</span></div>
+    <div class="logo-cellc"><span class="logo-word">Baltic Towers</span></div>
+    <div class="logo-cellc"><span class="logo-word">VTS Group</span></div>
+  </div>
+</section>
+
+<!-- ============ 8 · OPINIE / TESTIMONIALS ============ -->
+<section class="tm shell" id="opinie" data-screen-label="Opinie">
+  <div class="sec-head">
+    <h2 class="sec-title reveal">Co mówią<br>nasi klienci.</h2>
+    <span class="sec-index reveal">[ 08 ] — OPINIE</span>
+  </div>
+  <div class="tm__grid">
+    <figure class="tm-card reveal">
+      <div class="tm-card__mark">"</div>
+      <blockquote class="tm-card__q">Sezmoo rozumie obraz i tempo social mediów. Materiały dostaliśmy na czas i dokładnie w stylu, jakiego potrzebowaliśmy.</blockquote>
+      <figcaption class="tm-card__by">
+        <span class="tm-card__av">AP</span>
+        <span><span class="tm-card__name">Audi Grupa Plichta</span><span class="tm-card__role">Automotive · Trójmiasto</span></span>
+      </figcaption>
+    </figure>
+    <figure class="tm-card reveal" data-d="1">
+      <div class="tm-card__mark">"</div>
+      <blockquote class="tm-card__q">Profesjonalne podejście od briefu po montaż. Film employer brandingowy realnie pomógł nam w rekrutacji.</blockquote>
+      <figcaption class="tm-card__by">
+        <span class="tm-card__av">BT</span>
+        <span><span class="tm-card__name">Baltic Towers</span><span class="tm-card__role">Przemysł · Employer branding</span></span>
+      </figcaption>
+    </figure>
+    <figure class="tm-card reveal" data-d="2">
+      <div class="tm-card__mark">"</div>
+      <blockquote class="tm-card__q">Kreatywni, szybcy i konkretni. Współpraca, do której chętnie wracamy przy kolejnych projektach.</blockquote>
+      <figcaption class="tm-card__by">
+        <span class="tm-card__av"><img src="assets/clients/33-indeed.avif" alt="33 indeed" /></span>
+        <span><span class="tm-card__name">33 indeed</span><span class="tm-card__role">Marketing · Partner</span></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CTA · przed kontaktem -->
+<section class="cta" aria-label="Zacznij projekt">
+  <div class="cta__bg"></div>
+  <div class="cta__corners"><span></span><span></span><span></span><span></span></div>
+  <div class="shell cta__inner">
+    <span class="eyebrow reveal"><span class="tick"></span>Let's roll</span>
+    <h2 class="reveal">Masz markę do <span style="color:var(--rec)">pokazania?</span></h2>
+    <p class="reveal" data-d="1">Opowiedz, co chcesz wyprodukować — rolkę, kampanię, film czy całą serię materiałów. Odpowiadamy w ciągu 24h.</p>
+    <a href="#kontakt" class="btn btn--primary reveal" data-d="2" data-magnetic><span class="ico"></span><span class="lbl">Wyślij brief</span></a>
+  </div>
+  <div class="cta__hud"><span class="d"></span><span data-tc>00:00:12:08</span> · GDAŃSK / PL</div>
+</section>
+
+<!-- ============ 9 · KONTAKT ============ -->
+<section class="contact" id="kontakt" data-screen-label="Kontakt">
+  <div class="contact__bg"></div>
+  <div class="shell">
+    <div class="sec-head">
+      <h2 class="sec-title reveal">Zróbmy z tego<br>dobry <span style="color:var(--rec)">content.</span></h2>
+      <span class="sec-index reveal">[ 09 ] — KONTAKT</span>
+    </div>
+    <div class="contact__grid">
+      <div>
+        <span class="eyebrow reveal"><span class="tick"></span>Let's roll</span>
+        <p class="contact__lead reveal" data-d="1">Masz markę, produkt albo kampanię do pokazania? Napisz do nas — odpowiadamy w ciągu 24h.</p>
+        <div class="cinfo reveal" data-d="2">
+          <div class="cinfo__item"><div class="cinfo__k">E-mail</div><div class="cinfo__v"><a href="mailto:hello@sezmoo.com">hello@sezmoo.com</a></div></div>
+          <div class="cinfo__item"><div class="cinfo__k">Telefon</div><div class="cinfo__v"><a href="tel:+48502260450">+48 502 260 450</a></div></div>
+          <div class="cinfo__item"><div class="cinfo__k">Studio</div><div class="cinfo__v">Zeusa 34, 80-299 Gdańsk</div></div>
+        </div>
+        <div class="cinfo__socials reveal" data-d="3">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+      <form class="cform reveal" data-d="1" id="contact-form" novalidate>
+        <div class="cbrief">
+          <label>Czego potrzebujesz?</label>
+          <input type="hidden" id="cf-type" name="type" value="" />
+          <div class="cbrief__chips" role="group" aria-label="Typ potrzeby">
+            <button type="button" class="cbrief__chip" data-type="video">Video</button>
+            <button type="button" class="cbrief__chip" data-type="kampania">Kampania / content</button>
+            <button type="button" class="cbrief__chip" data-type="social">Social media</button>
+            <button type="button" class="cbrief__chip" data-type="design">Design / grafika</button>
+            <button type="button" class="cbrief__chip" data-type="web">Strona / landing</button>
+            <button type="button" class="cbrief__chip" data-type="pogadac">Nie wiem, chcę pogadać</button>
+          </div>
+        </div>
+        <div class="cform__row">
+          <div class="cfield"><label for="cf-name">Imię i nazwisko</label><input id="cf-name" name="name" type="text" placeholder="Jan Kowalski" required /></div>
+          <div class="cfield"><label for="cf-phone">Telefon</label><input id="cf-phone" name="phone" type="tel" placeholder="+48 ..." /></div>
+        </div>
+        <div class="cfield"><label for="cf-email">E-mail</label><input id="cf-email" name="email" type="email" placeholder="ty@firma.pl" required /></div>
+        <div class="cfield"><label for="cf-msg">Wiadomość</label><textarea id="cf-msg" name="message" placeholder="Opowiedz nam o projekcie..." required></textarea></div>
+        <label class="cconsent"><input type="checkbox" required /> <span>Wyrażam zgodę na przetwarzanie moich danych w celu kontaktu, zgodnie z polityką prywatności SEZMOO.</span></label>
+        <button class="btn btn--primary" type="submit"><span class="ico"></span><span class="lbl">Wyślij wiadomość</span></button>
+        <p class="cform__note" id="cf-note">● REC · Odpowiadamy w ciągu 24h</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="site-footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div class="footer__brandcol">
+        <a href="#hero" class="footer__logo" data-totop><img src="assets/brand/sezmoo-logo-wy.svg" alt="SEZMOO" /></a>
+        <p class="footer__tag">Content · Video · Campaigns</p>
+        <p class="footer__desc">Video, content i materiały kampanijne dla marek, które potrzebują regularnej, sprawnej produkcji.</p>
+      </div>
+      <nav class="footer__cols" aria-label="Stopka">
+        <div class="footer__col">
+          <span class="footer__h">Studio</span>
+          <a href="#work">Realizacje</a>
+          <a href="uslugi-marketingowe/index.html">Usługi</a>
+          <a href="#team">Zespół</a>
+          <a href="#kontakt">Brief</a>
+        </div>
+        <div class="footer__col">
+          <span class="footer__h">Kontakt</span>
+          <a href="mailto:hello@sezmoo.com">hello@sezmoo.com</a>
+          <a href="tel:+48502260450">+48 502 260 450</a>
+          <span class="footer__addr">Zeusa 34<br>80-299 Gdańsk</span>
+        </div>
+        <div class="footer__col">
+          <span class="footer__h">Social</span>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Facebook">Facebook</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 SEZMOO — ALL RIGHTS RESERVED</span>
+      <a href="#hero" class="footer__totop" data-totop>Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="#16130e"/>
+    <circle cx="42" cy="48" r="12" fill="none" stroke="#ffd200" stroke-width="3.5"/>
+    <circle cx="62" cy="48" r="12" fill="none" stroke="#ffd200" stroke-width="3.5"/>
+    <text x="50" y="80" fill="#f3efe9" font-family="monospace" font-size="11" font-weight="700" text-anchor="middle">SEZMOO</text>
+  </svg>
+</template>
+
+<script src="app.js"></script>
+<script>
+/* contact form — no backend: confirm + reset */
+(function(){
+  var f = document.getElementById('contact-form');
+  if(!f) return;
+  var note = document.getElementById('cf-note');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    if(note){ note.textContent = '● Dziękujemy — odezwiemy się w ciągu 24h.'; note.style.color = 'var(--rec)'; }
+    f.reset();
+  });
+})();
+</script>
+<!-- ============ TWEAKS PANEL ============ -->
+<aside class="tweaks" id="tweaks" hidden aria-label="Tweaks">
+  <header class="tweaks__head">
+    <span class="tweaks__title"><span class="d"></span>Tweaks</span>
+    <button class="tweaks__x" id="tweaks-x" type="button" aria-label="Zamknij">✕</button>
+  </header>
+  <div class="tweaks__body">
+    <label class="tw-row">
+      <span>Hero scroll-expand</span>
+      <input type="checkbox" id="tw-hero" />
+    </label>
+    <label class="tw-row">
+      <span>Kinetyczne nagłówki</span>
+      <input type="checkbox" id="tw-type" />
+    </label>
+    <div class="tw-row tw-row--col">
+      <span>Krój tytułów</span>
+      <div class="tw-seg" id="tw-font">
+        <button type="button" data-font="archivo" class="is-on">Archivo</button>
+        <button type="button" data-font="expanded">Expanded</button>
+        <button type="button" data-font="anton">Anton</button>
+        <button type="button" data-font="editorial">Editorial</button>
+      </div>
+    </div>
+    <div class="tw-row tw-row--col">
+      <span>Długość rozjazdu hero · <em id="tw-len-val">110</em></span>
+      <input type="range" id="tw-len" min="40" max="180" step="10" value="110" />
+    </div>
+  </div>
+</aside>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var TWEAKS = /*EDITMODE-BEGIN*/{
+    "heroFx": true,
+    "typeFx": true,
+    "displayFont": "archivo",
+    "heroLen": 110
+  }/*EDITMODE-END*/;
+
+  function apply(t){
+    root.classList.toggle('fx-hero', !!t.heroFx);
+    root.classList.toggle('fx-type', !!t.typeFx);
+    root.setAttribute('data-display', t.displayFont || 'archivo');
+    root.style.setProperty('--hero-extra', t.heroLen);
+    var h=document.getElementById('tw-hero'); if(h) h.checked=!!t.heroFx;
+    var ty=document.getElementById('tw-type'); if(ty) ty.checked=!!t.typeFx;
+    var lv=document.getElementById('tw-len'); if(lv) lv.value=t.heroLen;
+    var lvv=document.getElementById('tw-len-val'); if(lvv) lvv.textContent=t.heroLen;
+    var fb=document.querySelectorAll('#tw-font button');
+    fb.forEach(function(b){ b.classList.toggle('is-on', b.dataset.font===(t.displayFont||'archivo')); });
+  }
+  apply(TWEAKS);
+
+  function persist(edits){ try{ window.parent.postMessage({type:'__edit_mode_set_keys', edits:edits}, '*'); }catch(e){} }
+
+  var panel=document.getElementById('tweaks');
+  window.addEventListener('message', function(e){
+    var d=e.data||{};
+    if(d.type==='__activate_edit_mode'){ panel.hidden=false; }
+    else if(d.type==='__deactivate_edit_mode'){ panel.hidden=true; }
+  });
+  window.parent.postMessage({type:'__edit_mode_available'}, '*');
+
+  document.getElementById('tweaks-x').addEventListener('click', function(){
+    panel.hidden=true; window.parent.postMessage({type:'__edit_mode_dismissed'}, '*');
+  });
+  document.getElementById('tw-hero').addEventListener('change', function(e){ TWEAKS.heroFx=e.target.checked; apply(TWEAKS); persist({heroFx:TWEAKS.heroFx}); });
+  document.getElementById('tw-type').addEventListener('change', function(e){ TWEAKS.typeFx=e.target.checked; apply(TWEAKS); persist({typeFx:TWEAKS.typeFx}); });
+  document.getElementById('tw-len').addEventListener('input', function(e){ TWEAKS.heroLen=+e.target.value; apply(TWEAKS); persist({heroLen:TWEAKS.heroLen}); });
+  document.querySelectorAll('#tw-font button').forEach(function(b){
+    b.addEventListener('click', function(){ TWEAKS.displayFont=b.dataset.font; apply(TWEAKS); persist({displayFont:TWEAKS.displayFont}); });
+  });
+})();
+</script>
+</body>
+</html>
